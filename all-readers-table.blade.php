@@ -5,11 +5,11 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Books table having CRUD operations</h2>
+                        <h2>Readers table having CRUD operations</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('create-book-form') }}" class="btn btn-success btn-sm" title="Add new student" <i
-                            class="fa fa-plus" aria-hidden="true"></i> Add New Book</a>
+                        <a href="{{ url('create-reader-form') }}" class="btn btn-success btn-sm" title="Add new reader" <i
+                            class="fa fa-plus" aria-hidden="true"></i> Add New Reader</a>
                         <a href="{{ url('index') }}" class="btn btn-success btn-sm" title="Home" <i class="fa fa-plus"
                             aria-hidden="true"></i>Home</a>
                         <br />
@@ -20,30 +20,30 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Name</th>
-                                        <th>Author</th>
+                                        <th>Phone</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($books as $book)
+                                    @foreach ($readers as $reader)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $book->name }}</td>
-                                            <td>{{ $book->author }}</td>
+                                            <td>{{ $reader->name }}</td>
+                                            <td>{{ $reader->phone }}</td>
                                             <td>
-                                                <a href="{{ url('/book_tracker/' . $book->id . '/view-book') }}"
-                                                    title="View book"><button value="View"
+                                                <a href="{{ url('/book_tracker/' . $reader->id . '/view-reader') }}"
+                                                    title="View Reader"><button value="View"
                                                         class="btn btn-primary btn-sm"><i class="fa fa-eye"
                                                             aria-hidden="true"></i>View</button></a>
-                                                <a href="{{ url('/book_tracker/' . $book->id . '/past-takeout') }}"
-                                                    title="Past takeout of the book"><button value="Past Takeout"
-                                                        class="btn btn-primary btn-sm"><i class="fa fa-eye"
-                                                            aria-hidden="true"></i>Past Takeout</button></a>
-                                                <a href="{{ url('/book_tracker/' . $book->id . '/edit-book') }}"
-                                                    title="Edit book"><button class="btn btn-primary btn-sm"><i
+                                                            <a href="{{ url('/book_tracker/' . $reader->id . '/history-of-takeouts') }}"
+                                                                title="History of takeouts"><button value="View"
+                                                                    class="btn btn-primary btn-sm"><i class="fa fa-eye"
+                                                                        aria-hidden="true"></i>History of Takeouts</button></a>
+                                                <a href="{{ url('/book_tracker/' . $reader->id . '/edit-reader') }}"
+                                                    title="Edit Reader"><button class="btn btn-primary btn-sm"><i
                                                             class="fa fa-pencil-square-o"
                                                             aria-hidden="true"></i>Edit</button></a>
-                                                <form method="POST" action="{{ url('/book_tracker/' . $book->id . '/destroy-book') }}"
+                                                <form method="POST" action="{{ url('/book_tracker/' . $reader->id .'/destroy-reader') }}"
                                                     accept-charset="UTF-8" style="display:inline">
                                                     {{-- {{ method_field('DELETE') }} --}}
                                                     {{ csrf_field() }}

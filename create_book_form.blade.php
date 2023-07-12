@@ -12,7 +12,8 @@
                     <input type="text" name="author" class="form-control"></br>
 
                     <input type="submit" value="Save" class="btn btn-success btn-sm">
-                    <button class="btn btn-primary btn-sm"><a href="index" style="color: #fff; text-decoration:none;">Return Home</a></button></br>
+                    <button class="btn btn-primary btn-sm"><a href="index"
+                            style="color: #fff; text-decoration:none;">Return Home</a></button></br>
 
                 </form>
 
