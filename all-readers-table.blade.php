@@ -1,11 +1,12 @@
 @extends('book_tracker.layout')
 @section('content')
+<center>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Readers table having CRUD operations</h2>
+                        <h2>Readers</h2>
                     </div>
                     <div class="card-body">
                         <a href="{{ url('create-reader-form') }}" class="btn btn-success btn-sm" title="Add new reader" <i
@@ -62,3 +63,4 @@
             </div>
         </div>
     </div>
+</center>

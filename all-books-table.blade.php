@@ -1,13 +1,14 @@
 @extends('book_tracker.layout')
 @section('content')
+
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
-                <div class="card">
+            <div class="col-md-12">
+                <div class="card mx-auto">
                     <div class="card-header">
-                        <h2>Books table having CRUD operations</h2>
+                        <h3 class="text-center">Books</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <a href="{{ url('create-book-form') }}" class="btn btn-success btn-sm" title="Add new student" <i
                             class="fa fa-plus" aria-hidden="true"></i> Add New Book</a>
                         <a href="{{ url('index') }}" class="btn btn-success btn-sm" title="Home" <i class="fa fa-plus"

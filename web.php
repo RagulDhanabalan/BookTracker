@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\BookTrackerController;
+use App\Models\Book;
+use App\Models\Reader;
+use App\Models\Takeout;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Response;
+// use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,4 +87,13 @@ Route::post('book_tracker/{id}/destroy-book', [BookTrackerController::class, 'de
 Route::post('book_tracker/{id}/destroy-reader', [BookTrackerController::class, 'destroy_reader']);
 
 // for showing the history of takeouts of the reader
-Route::get('book_tracker/{id}/history-of-takeouts', [BookTrackerController::class, 'history_of_takeouts']);
+// Route::get('book_tracker/{id}/history-of-takeouts', [BookTrackerController::class, 'history_of_takeouts']);
+Route::get('book_tracker/{id}/history-of-takeouts', [BookTrackerController::class, 'join']);
+
+// ------------------------------------------------------
+
+Route::get('/join', [BookTrackerController::class, 'join']);
+Route::get('/days/{id}', [BookTrackerController::class, 'days']);
+
+
+

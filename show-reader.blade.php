@@ -12,7 +12,7 @@
                 <p class="card-text">Reader name : {{ $reader->name ?? 'None' }}</p>
                 <p class="card-text">Reader Phone : {{ $reader->phone ?? 'None' }}</p>
 
-                <a href="/all-readers-table">Back</a>
+                <button class="btn btn-success btn-sm"><a href="/all-readers-table" style="color:#fff; text-decoration : none;">Back</a></button>
             </div>
 
             </hr>
