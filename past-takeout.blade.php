@@ -4,19 +4,27 @@
 
     <div class="card">
         <div class="card-header">Book Last Takeout Info</div>
-        <div class="card-body">
+            <table class="table table-borderd table-stripped">
+            <thead>
 
+                <tr>
+                    <th scope="col">Reader name</th>
+                    <th scope="col">Takeout Date</th>
+                    <th scope="col">Return Date</th>
+                    {{-- <th scope="col">End Date</th> --}}
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($past_takeouts as $takeouts)
+                <tr>
+                    <td>{{ $takeouts->reader->name }}</td>
+                    <td>{{ $takeouts->start_date }}</td>
+                    <td>{{ $takeouts->end_date }}</td>
+                </tr>
+                </tbody>
+                @endforeach
 
-            <div class="card-body">
-                <h5 class="card-title">Book Id : {{ $takeouts->book_id ?? 'None' }}</h5>
-                {{-- <h5 class="card-title">Book name : {{ $books->name ?? 'None' }}</h5> --}}
+        </table>
 
-                <p class="card-text">Last take out of this book is : {{ $takeouts->start_date ?? 'None' }}by ,</p>
-                <p class="card-text">Reader Id : {{ $takeouts->reader_id ?? 'None' }}</p>
-                <a href="/all-books-table">Back</a>
-            </div>
-
-            </hr>
-
-        </div>
-    </div>
+    </div></br>
+    <button class="btn btn-success btn-sm"><a href="/all-books-table" style="color:#fff;text-decoration:none;">Back</a></button>

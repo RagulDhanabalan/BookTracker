@@ -16,28 +16,38 @@
                 @csrf
                 <h3>Edit Takeouts Record</h3><hr>
                 <?= session('message') ?>
-                <label for="">Book Id :</label>
-                {{-- <select  name="book_id"> --}}
-                <input type="text" name="book_id" placeholder="book_id"
-                    value="{{ $takeout->book_id ?? 'None' }}" />
-                    {{-- @foreach ($takeout as $takeout)
-                        <option value="{{ $takeout->book_id ?? 'None' }}">{{ $takeout->book_id?? 'None' }}</option>
-                    @endforeach --}}
-                {{-- </select> --}}
-                <br><br>
-                <label for="">Reader Id :</label>
-                <input type="text" name="reader_id" placeholder="reader_id"
-                    value="{{ $takeout->reader_id ?? 'None' }}" /><br><br>
-                <label for="start_date">Start Date :</label>
-                <input type="date" name="start_date" placeholder="start_date"
-                    value="{{ $takeout->start_date ?? 'None' }}" /><br><br>
-                <label for="end_date">End Date :</label>
-                <input type="date" name="end_date" placeholder="end_date"
-                    value="{{ $takeout->end_date ?? 'None'}}" /><br><br>
-                <label for="">Feed Back :</label>
-                <input type="text" name="feedback" placeholder="Edit your feedback"
-                    value="{{ $takeout->feedback ?? 'None' }}" /><br><br>
+                <label for="book_id" class="form-control">Book Name :</label>
+                <select  name="book_id" class="form-control">
 
+                    @foreach ($book as $books)
+                        <option value="{{ $books->id ?? 'None' }}">{{ $books->name?? 'None' }}</option>
+                    @endforeach
+             </select>
+                <label for="reader_id" class="form-control">Reader Name :</label>
+                <select  name="reader_id" class="form-control">
+
+                    @foreach ($reader as $readers)
+                        <option value="{{ $readers->id ?? 'None' }}">{{ $readers->name ?? 'None' }}</option>
+                    @endforeach
+             </select>
+                <label for="start_date" class="form-control">Start Date :</label>
+                <input type="date" name="start_date" placeholder="start_date"
+                    value="{{ $takeout->start_date ?? 'None' }}"  class="form-control"/>
+                    @if ($errors->has('start_date'))
+                        <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                    @endif
+
+                <label for="end_date" class="form-control">End Date :</label>
+                <input type="date" name="end_date" placeholder="end_date"
+                    value="{{ $takeout->end_date ?? 'None'}}"  class="form-control"/>
+                    @if ($errors->has('end_date'))
+                        <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                    @endif
+
+                <label for="feedback" class="form-control">Feed Back :</label>
+                <input type="text" name="feedback" placeholder="Edit your feedback"
+                    value="{{ $takeout->feedback ?? 'None' }}" class="form-control"/>
+            </br>
                 <input type="submit" value="Update takeout info" class="btn btn-success btn-sm" />
 
             </form>

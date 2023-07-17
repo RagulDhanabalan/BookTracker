@@ -22,8 +22,8 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Book Id</th>
-                                        <th>Reader Id</th>
+                                        <th>Book Name</th>
+                                        <th>Reader Name</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
                                         <th>Total No. of Days</th>
@@ -37,8 +37,9 @@
                                         <tr>
                                             {{-- <td>{{ $loop->iteration }}</td> --}}
                                             <td>{{ $takeout->id }}</td>
-                                            <td>{{ $takeout->book_id }}</td>
-                                            <td>{{ $takeout->reader_id }}</td>
+                                            {{-- <td>hi</td> --}}
+                                            <td>{{ $takeout->book->name ?? 'None' }}</td>
+                                            <td>{{ $takeout->reader->name ?? 'None' }}</td>
                                             <td>{{ $takeout->start_date }}</td>
                                             <td>{{ $takeout->end_date }}</td>
                                             <td>{{ $takeout->numOfDays}}</td>

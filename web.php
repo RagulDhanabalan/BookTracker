@@ -88,12 +88,12 @@ Route::post('book_tracker/{id}/destroy-reader', [BookTrackerController::class, '
 
 // for showing the history of takeouts of the reader
 // Route::get('book_tracker/{id}/history-of-takeouts', [BookTrackerController::class, 'history_of_takeouts']);
-Route::get('book_tracker/{id}/history-of-takeouts', [BookTrackerController::class, 'join']);
+Route::get('book_tracker/{id}/history-of-takeouts', [BookTrackerController::class, 'past_takeouts']);
 
 // ------------------------------------------------------
 
-Route::get('/join', [BookTrackerController::class, 'join']);
-Route::get('/days/{id}', [BookTrackerController::class, 'days']);
+// Route::get('/join', [BookTrackerController::class, 'join']);
+// Route::get('/days/{id}', [BookTrackerController::class, 'days']);
 
 
 
