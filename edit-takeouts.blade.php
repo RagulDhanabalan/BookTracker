@@ -18,16 +18,22 @@
                 <?= session('message') ?>
                 <label for="book_id" class="form-control">Book Name :</label>
                 <select  name="book_id" class="form-control">
-
-                    @foreach ($book as $books)
-                        <option value="{{ $takeout->id }}">{{ $books->name ?? 'None' }}</option>
-                    @endforeach
+                    
+                    {{-- <option value="{{ $version }}" @selected(old('version') == $version)>
+                        {{ $version }}
+                    </option> --}}
+                    {{-- @foreach ($book as $books) --}}
+                        {{-- <option value="{{ $books->id }}">{{ $books->name ?? 'None' }}</option> --}}
+                        {{-- <option value= "{{ $books->id }}" @selected(old('books->id') == $books->id) >{{ $books->name }}</option> --}}
+                        {{-- <option value={{ $books->id }}> {{ $books->name ?? 'None' }}</option> --}}
+                        {{-- @endforeach --}}
              </select>
                 <label for="reader_id" class="form-control">Reader Name :</label>
                 <select  name="reader_id" class="form-control">
 
                     @foreach ($reader as $readers)
-                        <option value="{{ $takeout->reader_id }}">{{ $readers->name }}</option>
+                        {{-- <option value="{{ $readers->id }}">{{ old('ReaderName',$readers->name) }}</option> --}}
+                        <option value= "{{ $readers->id }}" @selected(old('readers->id') == $readers->id) >{{ $readers->name }}</option>
                     @endforeach
              </select>
                 <label for="start_date" class="form-control">Start Date :</label>

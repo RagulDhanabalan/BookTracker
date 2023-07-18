@@ -14,6 +14,9 @@ class Book extends Model
     public function takeout(){
         return $this->hasMany(Takeout::class);
     }
+    public function takeouts(){
+        return $this->belongsTo(Takeout::class);
+    }
     public function book(){
         return $this->hasMany(Book::class);
     }
@@ -22,5 +25,8 @@ class Book extends Model
     }
     public function reader(){
         return $this->hasMany(Reader::class);
+    }
+    public function readers(){
+        return $this->belongsTo(Reader::class);
     }
 }

@@ -25,4 +25,7 @@ class Takeout extends Model
         return $this->belongsTo(Reader::class);
     }
 
+    public function readers(){
+        return $this->hasMany(Reader::class);
+    }
 }

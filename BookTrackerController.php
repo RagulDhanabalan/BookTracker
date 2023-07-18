@@ -58,7 +58,7 @@ class BookTrackerController extends Controller
     {
         // $data = $request->all();
         $data = $request->validate([
-            'name' => 'required|unique:readers,Name',
+            'name' => 'required',
             'phone' => 'required|regex:[(\+91[\-\s]?)?[0]?(91)?[789]\d{9}]|digits:10|unique:readers,Phone',
         ]);
         $saveBook = Reader::create($data);
@@ -69,12 +69,17 @@ class BookTrackerController extends Controller
     {
         // $data = $request->all();
         $data = $request->validate([
-            'book_id' => 'required',
+            'book_id' => 'required|unique:takeouts|max:200',
             'reader_id' => 'required',
             'start_date' => 'required',
         ]);
+        // if(Takeout::where('takeouts',$book_id)->exists()){
+        //     return 'already exist';
+        // }
         $saveBook = Takeout::create($data);
-        return 'Reader Id ,'. $saveBook->id . ' New takeout record has been created !</br></br><a href="all-takeouts-table" style="text-decoration:none; background-color: green; color:#fff;padding:4px;border:1px solid #000"> Back </a>';
+        // $saveBook = Takeout::create($data);
+        // $save->save($data);
+        return 'Reader Id ,' . $saveBook->book_id . ' New takeout record has been created !</br></br><a href="all-takeouts-table" style="text-decoration:none; background-color: green; color:#fff;padding:4px;border:1px solid #000"> Back </a>';
     }
 
     //for showing books list table
@@ -155,6 +160,7 @@ class BookTrackerController extends Controller
     public function edit_takeouts($id)
     {
         $takeout = Takeout::find($id);
+        // $takeout = Takeout::get($id);
         $book = Book::get();
         $reader = Reader::get();
         return view('book_tracker/edit-takeouts', ['takeout' => $takeout, 'reader' => $reader, 'book' => $book]);
@@ -178,23 +184,24 @@ class BookTrackerController extends Controller
             'reader_id' => 'required|max:5',
             'start_date' => 'required',
             'end_date' => 'required|after:start_date',
-            'feedback' => 'required'
+            'feedback' => 'required',
         ]);
-        $saveBook =Takeout::find($id);
-        $saveBook -> update($data);
+        $saveBook = Takeout::find($id);
+        $saveBook->update($data);
         return 'Takeouts no.' . $saveBook->id . ' informations updated successfully ! <a href="/all-takeouts-table">Back</a>';
         // dd($takeout);
     }
     // for past takeout of the book informations
     public function past_takeout($id)
     {
-        $reader = Reader::with('book')->get();
+        
+        $takeout = Takeout::where('book_id', $id)->get();
 
-        $book = Book::findOrFail($id);
+        $book = Book::with('book');
 
-        $past_takeouts = $book->takeout()->where('end_date','<', now())->get(); // end_date
+        $reader = Reader::with('reader')->get();
 
-        return view('book_tracker/past-takeout', compact('reader', 'book', 'past_takeouts'));
+        return view('book_tracker/past-takeout', compact('takeout','book','reader'));
 
 
 
@@ -218,13 +225,13 @@ class BookTrackerController extends Controller
     }
 
     // for showing the history of takeouts of a reader
-    public function history_of_takeouts($id)
-    {
-        $takeouts = Takeout::find($id);
-        return view('book_tracker/history-of-takeouts', ['takeouts' => $takeouts]);
+    // public function history_of_takeouts($id)
+    // {
+    //     $takeouts = Takeout::find($id);
+    //     return view('book_tracker/history-of-takeouts', ['takeouts' => $takeouts]);
         // $takeouts = Takeout::where('reader_id', $id)->find($start_date,$end_date);
         // return view('book_tracker/history-of-takeouts', ['takeouts' => $takeouts]);
-    }
+    // }
 
     public function past_takeouts($id)
     {

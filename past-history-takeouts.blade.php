@@ -3,13 +3,13 @@
 
 
     <div class="card">
-        <div class="card-header">Book Last Takeout History</div>
+        <div class="card-header text-center"><h3>Last Takeout History</h3></div>
             <table class="table table-borderd table-stripped">
             <thead>
 
                 <tr>
                     @if ($history->isEmpty())
-                        <p>No Takeout Record Found To This Reader</p>
+                        <p class="text-center text-danger">No Takeout Record Found To This Reader</p>
                     @endif
                     {{-- <th scope="col">Id</th> --}}
                     <th scope="col">Reader Name</th>
@@ -27,8 +27,16 @@
                     <td>{{ $historys->reader->name ?? 'None'}}</td>
                     <td>{{ $historys->book->name ?? 'None' }}</td>
                     <td>{{ $historys->start_date }}</td>
-                    <td>{{ $historys->end_date }}</td>
-                    <td>{{ $historys->feedback }}</td>
+                    <td>{{ $historys->end_date ?? 'None'}}</td>
+                    {{-- @if($historys->end_date->is_null()){ --}}
+                        {{-- <p>Book is not returned yet</p> --}}
+                    {{-- } --}}
+                    {{-- @endif --}}
+                    <td>{{ $historys->feedback ?? 'None'}}</td>
+                    {{-- @if($historys->feedback->is_null()){
+                        <p>Reader is not given any feedback yet</p>
+                    } --}}
+                    {{-- @endif --}}
                 </tr>
                 </tbody>
                 @endforeach
