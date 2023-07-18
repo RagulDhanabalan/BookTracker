@@ -20,26 +20,26 @@
                 <select  name="book_id" class="form-control">
 
                     @foreach ($book as $books)
-                        <option value="{{ $books->id ?? 'None' }}">{{ $books->name?? 'None' }}</option>
+                        <option value="{{ $takeout->id }}">{{ $books->name ?? 'None' }}</option>
                     @endforeach
              </select>
                 <label for="reader_id" class="form-control">Reader Name :</label>
                 <select  name="reader_id" class="form-control">
 
                     @foreach ($reader as $readers)
-                        <option value="{{ $readers->id ?? 'None' }}">{{ $readers->name ?? 'None' }}</option>
+                        <option value="{{ $takeout->reader_id }}">{{ $readers->name }}</option>
                     @endforeach
              </select>
                 <label for="start_date" class="form-control">Start Date :</label>
                 <input type="date" name="start_date" placeholder="start_date"
-                    value="{{ $takeout->start_date ?? 'None' }}"  class="form-control"/>
+                    value="{{ $takeout->start_date }}"  class="form-control"/>
                     @if ($errors->has('start_date'))
                         <span class="text-danger">{{ $errors->first('start_date') }}</span>
                     @endif
 
                 <label for="end_date" class="form-control">End Date :</label>
                 <input type="date" name="end_date" placeholder="end_date"
-                    value="{{ $takeout->end_date ?? 'None'}}"  class="form-control"/>
+                    value="{{ $takeout->end_date }}"  class="form-control"/>
                     @if ($errors->has('end_date'))
                         <span class="text-danger">{{ $errors->first('end_date') }}</span>
                     @endif

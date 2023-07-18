@@ -45,7 +45,7 @@ class BookTrackerController extends Controller
     public function create_book(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|max:25|unique:books,Name',
+            'name' => 'required|max:40|unique:books,Name',
             'author' => 'required',
         ]);
         // $saveBook = Takeout::create($data);
@@ -180,9 +180,9 @@ class BookTrackerController extends Controller
             'end_date' => 'required|after:start_date',
             'feedback' => 'required'
         ]);
-        $saveBook =Takeout::create($data);
-        $saveBook -> save();
-        return 'Takeouts no.' . $saveBook . ' informations updated successfully ! <a href="/all-takeouts-table">Back</a>';
+        $saveBook =Takeout::find($id);
+        $saveBook -> update($data);
+        return 'Takeouts no.' . $saveBook->id . ' informations updated successfully ! <a href="/all-takeouts-table">Back</a>';
         // dd($takeout);
     }
     // for past takeout of the book informations
