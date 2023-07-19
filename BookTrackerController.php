@@ -159,11 +159,14 @@ class BookTrackerController extends Controller
 
     public function edit_takeouts($id)
     {
+        // $book = Book::get($id);
         $takeout = Takeout::find($id);
-        // $takeout = Takeout::get($id);
-        $book = Book::get();
-        $reader = Reader::get();
-        return view('book_tracker/edit-takeouts', ['takeout' => $takeout, 'reader' => $reader, 'book' => $book]);
+        $book = Book::with('takeouts','books','readers')->get();
+        $reader = Reader::with('book','takeouts')->get();
+        // $book = Book::find($id);
+        // $takeout = Takeout::get();
+        // $reader = Reader::get();
+        return view('book_tracker/edit-takeouts', ['takeout' => $takeout, 'book' => $book, 'reader' => $reader]);
     }
     // for updating the reader informations
     public function update_book(Request $request, $id)
@@ -194,7 +197,7 @@ class BookTrackerController extends Controller
     // for past takeout of the book informations
     public function past_takeout($id)
     {
-        
+
         $takeout = Takeout::where('book_id', $id)->get();
 
         $book = Book::with('book');

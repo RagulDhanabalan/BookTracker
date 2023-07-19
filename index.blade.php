@@ -15,7 +15,15 @@
 
 {{-- for all takeouts showing table --}}
 <button class="btn btn-primary btn-sm"><a href="all-takeouts-table" style="color: #fff;text-decoration:none;">All Take-outs Table</a></button>
+</br></br>
 
+{{-- <p>{{ now()->toDateTimeString('Y-m-d') }}</p> --}}
+
+{{-- {{ $dt = new DateTime("Y-m-d H:i:s") }}</p> --}}
+
+{{-- <small>Logged in at : <span class="text-success">{{ $now = now_date_time() }}</span></small> --}}
+<hr>
+{{-- <p>{{ localtime() }}</p> --}}
 </center>
 
 
